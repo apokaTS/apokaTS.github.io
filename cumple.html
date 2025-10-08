@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💙 Feliz Cumpleaños, Mi Amor 💙</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Pacifico&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #87e0ff, #ffe0f7, #b3f3ff);
+  background-size: 400% 400%;
+  animation: bgMove 12s ease infinite;
+  color: #333;
+  overflow-x: hidden;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+header {
+  background-color: rgba(94, 198, 255, 0.85);
+  color: white;
+  padding: 25px;
+  border-bottom: 4px solid #ff87b2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 2px 2px 0px #ffb3d9;
+  margin: 0;
+}
+
+header p {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #fff5fb;
+}
+
+.gallery, .carta {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.gallery.show, .carta.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px 25px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 25px;
+  margin: 40px auto;
+  max-width: 1000px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+}
+
+.carta {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+  padding: 40px;
+  margin: 60px auto;
+  max-width: 800px;
+  backdrop-filter: blur(3px);
+  overflow: hidden;
+}
+
+.carta h2 {
+  color: #ff6fa9;
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.poema {
+  white-space: pre-wrap;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: #ff6fa9;
+  font-weight: bold;
+  animation: glow 0.6s ease;
+  display: inline;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 2px #ffb3d9; }
+  50% { text-shadow: 0 0 8px #ffb3d9; }
+  100% { text-shadow: 0 0 2px #ffb3d9; }
+}
+
+.footer {
+  background-color: rgba(94, 198, 255, 0.9);
+  color: white;
+  padding: 20px;
+  font-size: 0.95rem;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.2);
+}
+
+.stitch {
+  position: fixed;
+  width: 120px;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0.95;
+  animation: float 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #ff87b2, #ffa6c9);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background 0.3s;
+  z-index: 11;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #ff6fa9, #ff94bb);
+}
+
+.float {
+  position: fixed;
+  bottom: -50px;
+  font-size: 1.5rem;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+}
+
+/* Splash / pantalla de transición */
+.splash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffffff, #ffeef8);
+  z-index: 9999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  opacity: 1;
+  visibility: visible;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.splash.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.splash-content { text-align: center; }
+.splash-logo { width: 140px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); animation: spinIn 0.9s ease; }
+@keyframes spinIn { from { transform: scale(0.6) rotate(-10deg); opacity: 0 } to { transform: scale(1) rotate(0); opacity: 1 } }
+.splash h2 { font-family: 'Pacifico', cursive; color: #ff6fa9; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<!-- Pantalla de transición visible al cargar/recargar -->
+<div id="splash" class="splash" aria-hidden="false">
+  <div class="splash-content">
+    <img src="img/Stitch.webp" alt="Stitch" class="splash-logo">
+    <h2 id="splash-text">Cargando...</h2>
+    <div style="margin-top:12px; max-width:260px; margin-left:auto; margin-right:auto;">
+      <div id="splash-bar" style="height:8px; background:#ffe6f0; border-radius:8px; overflow:hidden;">
+        <div id="splash-bar-fill" style="width:0%; height:100%; background:linear-gradient(90deg,#ff87b2,#ffb3d9);"></div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <button id="skip-btn" style="background:transparent;border:1px solid #ff6fa9;color:#ff6fa9;padding:6px 12px;border-radius:20px;cursor:pointer;">Saltar</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <h1>💙 Feliz Cumpleaños, Mi Amor 💙</h1>
+  <p>“Ohana significa familia, y familia significa que nunca te abandonaré.” 🌺</p>
+</header>
+
+<section class="gallery" id="gallery">
+  <img src="img/AbrazoOso.jpeg" alt="Abrazo De Oso" loading="lazy">
+  <img src="img/BesoTuni.jpeg" alt="Cita en Tuni" loading="lazy">
+  <img src="img/NuestraFamilia.jpeg" alt="Nuestra Hermosa Familia" loading="lazy">
+  <img src="img/LaNiñaDeMisOjos.jpeg" alt="La niña que se gano mi corazon!!!" loading="lazy">
+</section>
+
+<section class="carta" id="carta">
+  <h2>💌 Mi Carta para Ti 💌</h2>
+  <div class="poema" id="poema"></div>
+</section>
+
+<img src="img/Stitch.webp" alt="Stitch" class="stitch">
+
+<!-- Lightbox modal para la galería -->
+<div id="lightbox" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:9998;">
+  <button id="lb-close" style="position:absolute;top:18px;right:18px;background:transparent;border:none;color:white;font-size:28px;cursor:pointer;">✕</button>
+  <img id="lb-img" src="" alt="" style="max-width:92%;max-height:86%;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.6);" />
+</div>
+
+<audio id="bg-music" loop autoplay muted>
+  <source src="audio/Amor Completo.webm" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎶 Pausar música</button>
+
+<script>
+const music = document.getElementById('bg-music');
+const btn = document.querySelector('.music-btn');
+const splash = document.getElementById('splash');
+
+const texto = `Querida Miranda Jessminde,
+Hoy celebro no solo tu cumpleaños, sino el regalo más grande que tengo: tú.
+Desde que llegaste a mi vida, todo se llenó de color, risas y paz.
+Gracias por existir, por hacerme reír, por ser mi vida entera. 💙
+
+Quisiera amarte,
+con esa voz que se me quiebra cuando digo “yo te amo”,
+sin miedo al silencio ni a la herida,
+porque, como dijo Neruda,
+“En un beso, sabrás todo lo que he callado.”
+
+Amor que no busca ni huye, que se entrega con los ojos cerrados,
+como si el mundo fuera solo el temblor de tus manos.
+Benedetti susurra desde su rincón tranquilo:
+“Te quiero no por quién eres, sino por quién soy cuando estoy contigo.”
+
+Tú, mi raíz y mi aire. Mi tormenta y mi calma.
+Si alguna vez te vas, me quedará tu eco.
+Alfonsina Storni diría:
+“Soy un alma desnuda en estos versos.”
+Y eso soy contigo: solo yo, solo tú, solo el fuego que hacemos al mirarnos.
+
+Y Sabines susurraría:
+“Te quiero a las diez de la mañana, y a las once, y a las doce…”
+Yo también te quiero a cada hora que respiras.
+Porque mi amor no tiene ritmo ni calendario, es canción, es verso, es carne viva.
+Y si amar es perder un poco el juicio, déjame enloquecer contigo,
+porque “no quiero amor a medias, no quiero amor de nadie más.”
+
+Con todo mi amor,
+💙 Tu Osito 💙`;
+
+// Tiempo mínimo que la splash será visible (ms) para evitar parpadeos en cargas muy rápidas
+const MIN_SPLASH_MS = 800;
+
+// Efectos de sonido simples: generar beep usando WebAudio para pequeñas interacciones
+let audioCtx;
+function playBeep(freq=440, time=0.08, vol=0.06){
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = 'sine'; o.frequency.value = freq;
+    g.gain.value = vol;
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start();
+    setTimeout(()=>{ o.stop(); }, time*1000);
+  }catch(e){ /* ignore webaudio errors */ }
+}
+
+function initApp() {
+  // Mostrar gallery y carta
+  document.getElementById('gallery').classList.add('show');
+  document.getElementById('carta').classList.add('show');
+
+  // Escribir poema con frases importantes resaltadas
+  const contenedor = document.getElementById('poema');
+  let i = 0;
+  function escribir() {
+    if(i < texto.length){
+      let char = texto.charAt(i);
+      let span = document.createElement('span');
+
+      // Detectar saltos de línea
+      if(char === '\n') {
+        contenedor.appendChild(document.createElement('br'));
+      } else {
+        // Frases o emojis importantes
+        const frases = ["💙 Tu Osito 💙","Con todo mi amor","💙","💖","🌸","🌺","💞","amor", "amo","Te quiero a las diez de la mañana, y a las once, y a las doce…","Miranda Jessminde","En un beso, sabrás todo lo que he callado.", "amor", "Te quiero no por quién eres, sino por quién soy cuando estoy contigo.","Te quiero no por quién eres, sino por quién soy cuando estoy contigo.","Soy un alma desnuda en estos versos."];
+        let added = false;
+        for(let f of frases){
+          if(texto.substring(i, i+f.length) === f){
+            span.textContent = f;
+            span.classList.add('highlight');
+            contenedor.appendChild(span);
+            i += f.length;
+            added = true;
+            setTimeout(() => escribir(), 600); // pausa para resaltar la frase
+            return;
+          }
+        }
+        if(!added){
+          span.textContent = char;
+          contenedor.appendChild(span);
+        }
+      }
+      i++;
+      setTimeout(escribir, 40);
+    }
+  }
+  escribir();
+}
+
+// Gestionar reproducción de música (con fallback si el navegador bloquea autoplay)
+function startMusic() {
+  music.muted = false;
+  music.play().catch(() => {
+    const resume = () => { music.muted=false; music.play(); document.removeEventListener("click", resume); };
+    document.addEventListener("click", resume);
+  });
+}
+
+window.addEventListener('load', () => {
+  const start = performance.now();
+
+  // Iniciar música en segundo plano
+  startMusic();
+
+  // Actualizar barra de progreso simulada durante la splash
+  const barFill = document.getElementById('splash-bar-fill');
+  let progress = 0;
+  const progInterval = setInterval(()=>{
+    progress += 6 + Math.random()*8; // avance variable
+    if(progress>98) progress = 98;
+    if(barFill) barFill.style.width = progress + '%';
+  }, 120);
+
+  // Botón saltar
+  const skipBtn = document.getElementById('skip-btn');
+  if(skipBtn) skipBtn.addEventListener('click', ()=>{
+    clearInterval(progInterval);
+    document.getElementById('splash-bar-fill').style.width = '100%';
+    splash.classList.add('hidden'); splash.setAttribute('aria-hidden','true');
+    setTimeout(()=> initApp(), 420);
+    playBeep(880,0.06,0.07);
+  });
+
+  // Asegurar que la splash se muestre al menos MIN_SPLASH_MS
+  const elapsed = performance.now() - start;
+  const remaining = Math.max(0, MIN_SPLASH_MS - elapsed);
+
+  setTimeout(() => {
+    // Ocultar splash con transición
+    clearInterval(progInterval);
+    if(barFill) barFill.style.width = '100%';
+    splash.classList.add('hidden');
+    splash.setAttribute('aria-hidden', 'true');
+
+    // Esperar a que termine la transición CSS antes de inicializar el contenido
+    setTimeout(() => {
+      initApp();
+      playBeep(660,0.09,0.06);
+    }, 850);
+  }, remaining);
+});
+
+function toggleMusic() {
+  if(music.paused){ music.play(); btn.textContent="🎶 Pausar música"; }
+  else{ music.pause(); btn.textContent="🎵 Reproducir música"; }
+}
+
+const icons = ["💖", "🌸", "🌺", "💙", "💞"];
+setInterval(()=>{
+  const el = document.createElement("div");
+  el.classList.add("float");
+  el.textContent = icons[Math.floor(Math.random()*icons.length)];
+  el.style.left = Math.random()*100+"vw";
+  el.style.animationDuration = 4+Math.random()*4+"s";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),8000);
+},700);
+
+// Lightbox behavior
+document.addEventListener('click', (e)=>{
+  const imgs = document.querySelectorAll('.gallery img');
+  if(e.target && e.target.tagName === 'IMG' && Array.from(imgs).includes(e.target)){
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    lbImg.src = e.target.src; lbImg.alt = e.target.alt || '';
+    lb.style.display = 'flex';
+    playBeep(720,0.06,0.05);
+  }
+});
+document.getElementById('lb-close').addEventListener('click', ()=>{
+  document.getElementById('lightbox').style.display='none';
+  playBeep(520,0.05,0.04);
+});
+
+// Confetti simple: dibujo de partículas con canvas
+function launchConfetti() {
+  // crear canvas temporal
+  const c = document.createElement('canvas');
+  c.style.position='fixed'; c.style.left=0; c.style.top=0; c.style.zIndex=99999; c.style.pointerEvents='none';
+  c.width = innerWidth; c.height = innerHeight;
+  document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  const pieces = [];
+  const colors = ['#ff6fa9','#ffb3d9','#ffd166','#9be7ff','#b3f3ff'];
+  for(let i=0;i<90;i++) pieces.push({x:Math.random()*c.width,y:-Math.random()*c.height,vy:2+Math.random()*6, vx:-2+Math.random()*4, size:4+Math.random()*8, col:colors[Math.floor(Math.random()*colors.length)], rot:Math.random()*360});
+  let frames = 0;
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    for(const p of pieces){
+      p.x += p.vx; p.y += p.vy; p.vy += 0.06; p.rot += 6;
+      ctx.fillStyle = p.col;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
+      ctx.restore();
+    }
+    frames++;
+    if(frames>240){ document.body.removeChild(c); }
+    else requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// Detectar final de escritura para lanzar confetti
+// Observamos si el contenedor tiene ya todo el texto (pequeño heurístico)
+const poemaCont = document.getElementById('poema');
+let checkCount = 0;
+const poemaInterval = setInterval(()=>{
+  if(poemaCont && poemaCont.textContent && poemaCont.textContent.length > 20){
+    // Si no sigue aumentando por 1.5s, consideramos que terminó
+    checkCount++;
+    if(checkCount===8){ // ~8*200ms = 1.6s
+      launchConfetti();
+      playBeep(980,0.18,0.08);
+      clearInterval(poemaInterval);
+    }
+  }
+},200);
+</script>
+</body>
+</html>
